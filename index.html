@@ -1,136 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="referrer" content="referrer">
-  <title>Ten 3 | BXO</title>
-  <style>
-    .modal, .tg-banner {
-      position: fixed;
-      display: flex;
-      align-items: center;
-      z-index: 99999;
-      pointer-events: auto;
-    }
-    .modal {
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      backdrop-filter: blur(6px);
-      background: rgba(0, 0, 0, .4);
-      justify-content: center;
-      z-index: 100000;
-      animation: fadeIn .5s ease;
-    }
-    .tg-banner {
-      top: .16667in;
-      left: 12pt;
-      background: linear-gradient(135deg, rgba(29,161,242,.85), rgba(0,119,181,.85));
-      backdrop-filter: blur(8px);
-      border-radius: .75pc;
-      padding: .625pc .16667in;
-      box-shadow: 0 8px 18pt rgba(0,0,0,.25);
-      transition: transform .3s ease, box-shadow .3s ease;
-      color: #fff;
-    }
-    .tg-banner:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 .75pc 2pc rgba(0,0,0,.35);
-    }
-    .tg-banner span {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: .00417in;
-      text-shadow: 0 .75pt 2px rgba(0,0,0,.3);
-    }
-    html, body, iframe, video {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-      overflow: hidden;
-    }
-    a {
-      text-decoration: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0 }
-      to { opacity: 1 }
-    }
-  </style>
-  <style type="text/css">
-    * { user-select: auto !important; -webkit-user-select: auto !important; }
-  </style>
-  <input type="hidden" id="inject_idm_text_selection">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="description" content="ENJOY FREE LIVE">
+    <meta name="keywords" content="JIOTV, LIVETV, SPORTS, MOVIES, MUSIC">
+    <meta name="author" content="unknown">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TEAMROHITOFFICAL45_LIVE</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/plyr@3.6.2/dist/plyr.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <style>
+        html, body {
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+        }
+
+        .loading-text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .loading-text span {
+            display: inline-block;
+            margin: 0 5px;
+            color: #00b3ff;
+            font-family: 'Quattrocento Sans', sans-serif;
+        }
+
+        .watermark {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.2);
+            font-style: italic;
+            pointer-events: none;
+            z-index: 10;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        .telegram-button {
+            display: block;
+            margin: 20px auto;
+            padding: 6px 10px;
+            background-color: #0088cc;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 180px;
+            transition: background-color 0.3s ease;
+        }
+
+        .telegram-button:hover {
+            background-color: #006a99;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden;
+        }
+
+        .adsbox {
+            height: 1px !important;
+            width: 1px !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+            visibility: hidden !important;
+        }
+    </style>
+</head>
 <body>
 
-  <!-- ✅ Updated Banner without Image -->
-  <a href="https://t.me/TeamRohitOfficial45" class="tg-banner">
-    <span>Join @TeamRohitOfficial45</span>
-  </a>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-text">
+            <span>T</span><span>E</span><span>A</span><span>M</span><span>R</span><span>O</span><span>H</span><span>I</span><span>T</span><span>O</span><span>F</span><span>F</span><span>I</span><span>C</span><span>I</span><span>A</span><span>L</span><span>4</span><span>5</span>
+        </div>
+    </div>
 
-  <script> const id = "1090426133"; </script>
-  <script src="resources/1.js"></script>
+    <!-- Media Container -->
+    <div id="media-container" style="position: relative; width: 100%; height: auto;">
+        <!-- HLS Video Player -->
+        <video id="player" autoplay controls crossorigin playsinline style="--plyr-color-main:#15b4ff; width: 100%; display: none;">
+            <source id="m3u8-url" src="" type="application/x-mpegURL">
+        </video>
 
-  <div id="popup-container"></div>
+        <!-- Iframe Player -->
+        <div class="iframe-wrapper" id="iframe-wrapper" style="display: none;">
+            <iframe id="iframe-player"
+                sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                allow="encrypted-media; fullscreen"
+                allowfullscreen>
+            </iframe>
+        </div>
 
-  <!-- ✅ Plyr Video Player -->
-  <div class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--paused plyr--is-touch">
-    <div class="plyr__controls">
-      <button class="plyr__controls__item plyr__control" type="button" data-plyr="play" aria-pressed="false" aria-label="Play">
-        <svg class="icon--pressed" aria-hidden="true"><use xlink:href="#plyr-pause"></use></svg>
-        <svg class="icon--not-pressed" aria-hidden="true"><use xlink:href="#plyr-play"></use></svg>
-        <span class="label--pressed plyr__sr-only">Pause</span>
-        <span class="label--not-pressed plyr__sr-only">Play</span>
-      </button>
+        <!-- Watermark -->
+        <div class="watermark">
+            𝙏𝙀𝘼𝙈𝙍𝙊𝙃𝙄𝙏𝙊𝙁𝙁𝙄𝘾𝙄𝘼𝙇𝟰𝟱
+        </div>
+    </div>
 
-      <div class="plyr__controls__item plyr__volume">
-        <button type="button" class="plyr__control" data-plyr="mute" aria-pressed="false">
-          <svg class="icon--pressed"><use xlink:href="#plyr-muted"></use></svg>
-          <svg class="icon--not-pressed"><use xlink:href="#plyr-volume"></use></svg>
-          <span class="label--pressed plyr__sr-only">Unmute</span>
-          <span class="label--not-pressed plyr__sr-only">Mute</span>
-        </button>
-        <input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="--value: 100%;">
-      </div>
+    <!-- Telegram Button -->
+    <a href="https://t.me/+lkbpBqFd0FljNzJl" class="telegram-button" target="_blank">
+        Join Our Telegram Channel
+    </a>
 
-      <div class="plyr__controls__item plyr__menu">
-        <button aria-haspopup="true" type="button" class="plyr__control" data-plyr="settings" aria-pressed="false">
-          <svg><use xlink:href="#plyr-settings"></use></svg>
-          <span class="plyr__sr-only">Settings</span>
-        </button>
-      </div>
+    <!-- Scripts -->
+    <script>
+        // Detect Ad Blocker
+        function detectAdBlock() {
+            const bait = document.createElement('div');
+            bait.className = 'adsbox';
+            document.body.appendChild(bait);
 
-      <button class="plyr__controls__item plyr__control" type="button" data-plyr="fullscreen" aria-pressed="false">
-        <svg class="icon--pressed"><use xlink:href="#plyr-exit-fullscreen"></use></svg>
-        <svg class="icon--not-pressed"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
-        <span class="label--pressed plyr__sr-only">Exit fullscreen</span>
-        <span class="label--not-pressed plyr__sr-only">Enter fullscreen</span>
-      </button>
-    </div>
+            setTimeout(() => {
+                if (bait.offsetHeight === 0 || bait.clientHeight === 0) {
+                    alert("Ad blocker detected. Please disable it for the best experience.");
+                }
+                document.body.removeChild(bait);
+            }, 100);
+        }
 
-    <div class="plyr__video-wrapper">
-      <video id="player" src="blob:https://bxo.lol/c30f4c04-0c92-4c12-b17a-71365f40e2d3" style="width: 100%; height: 100vh;"></video>
-    </div>
+        window.onload = detectAdBlock;
 
-    <div class="plyr__captions" dir="auto"></div>
+        // Streaming logic
+        const urlParams = new URLSearchParams(window.location.search);
+        const streamUrl = urlParams.get("id");
 
-    <button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-pressed="false" aria-label="Play">
-      <svg><use xlink:href="#plyr-play"></use></svg>
-      <span class="plyr__sr-only">Play</span>
-    </button>
-  </div>
+        const videoEl = document.getElementById("player");
+        const sourceEl = document.getElementById("m3u8-url");
+        const iframeEl = document.getElementById("iframe-player");
+        const iframeWrapper = document.getElementById("iframe-wrapper");
 
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
+        // Hide loading screen
+        setTimeout(() => {
+            document.getElementById("loading").style.display = "none";
+        }, 1000);
+
+        if (streamUrl && streamUrl.trim() !== "") {
+            if (streamUrl.endsWith(".m3u8")) {
+                // HLS streaming
+                sourceEl.src = streamUrl;
+                videoEl.style.display = "block";
+
+                const posterURL = "https://i.postimg.cc/Y0918Y71/IMG-20240810-011453-139.jpg";
+                const img = new Image();
+                img.onload = () => videoEl.setAttribute("poster", posterURL);
+                img.onerror = () => videoEl.setAttribute("poster", "https://example.com/fallback-poster.jpg");
+                img.src = posterURL;
+
+                document.addEventListener("DOMContentLoaded", () => {
+                    const config = { maxMaxBufferLength: 100 };
+                    const plyrOptions = {};
+                    if (Hls.isSupported()) {
+                        const hls = new Hls(config);
+                        hls.loadSource(streamUrl);
+                        hls.attachMedia(videoEl);
+                        hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+                            const qualities = hls.levels.map(level => level.height);
+                            plyrOptions.quality = {
+                                default: qualities[0],
+                                options: qualities,
+                                forced: true,
+                                onChange: q => {
+                                    hls.levels.forEach((level, i) => {
+                                        if (level.height === q) {
+                                            hls.currentLevel = i;
+                                        }
+                                    });
+                                }
+                            };
+                            new Plyr(videoEl, plyrOptions);
+                        });
+                        window.hls = hls;
+                    } else {
+                        new Plyr(videoEl, plyrOptions);
+                    }
+                });
+            } else {
+                // Fallback to iframe
+                iframeEl.src = streamUrl;
+                iframeWrapper.style.display = "block";
+            }
+        } else {
+            alert("Invalid or missing stream URL.");
+        }
+    </script>
 
 </body>
 </html>
