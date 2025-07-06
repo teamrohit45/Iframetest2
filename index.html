@@ -9,58 +9,45 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #f7f1f1;
-            color: #333;
+            height: 100%;
+            background-color: #2c3e50;
         }
-        .container {
+        /* Splash Screen */
+        .splash-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff6347; /* Warm background for splash */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-size: 3rem;
             text-align: center;
-            background: linear-gradient(135deg, #f44336, #ff9800);
-            color: #fff;
-            padding: 20px 0;
-            position: relative;
+            animation: fadeIn 2s ease-in-out, fadeOut 2s 5s forwards;
         }
-        .header {
+        .splash-message {
             font-size: 3rem;
             font-weight: bold;
-            margin-top: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
-        .hanuman-image {
+        .splash-image {
             width: 300px;
-            height: auto;
+            margin-top: 30px;
             animation: bounce 2s infinite;
         }
-        .date {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            font-weight: bold;
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
-        .invitation-text {
-            font-size: 1.2rem;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .invitation-text p {
-            margin: 10px 0;
-        }
-        .footer {
-            margin-top: 40px;
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-        .countdown {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #ff9800;
-        }
-        .note {
-            font-style: italic;
-            margin-top: 20px;
-            color: #ff9800;
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
         }
 
         @keyframes bounce {
@@ -75,12 +62,47 @@
             }
         }
 
-        .border {
-            border-top: 5px solid #ff9800;
-            border-bottom: 5px solid #ff9800;
-            margin-top: 30px;
+        /* Main Content */
+        .main-content {
+            display: none; /* Hidden initially */
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #e74c3c, #f39c12);
+            color: #fff;
+            position: relative;
+            margin-top: 100px;
         }
-        
+        .header {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .hanuman-image {
+            width: 280px;
+            height: auto;
+            margin-top: 20px;
+        }
+        .date {
+            font-size: 1.6rem;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .invitation-text {
+            font-size: 1.1rem;
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            color: #333;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .countdown {
+            font-size: 2.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #f39c12;
+        }
+
         @media (max-width: 600px) {
             .header {
                 font-size: 2rem;
@@ -96,7 +118,14 @@
 </head>
 <body>
 
-    <div class="container">
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splash-screen">
+        <div class="splash-message">🙏 Jai Shri Ram 🙏</div>
+        <img class="splash-image" src="your-hanuman-image.jpg" alt="Lord Hanuman">
+    </div>
+
+    <!-- Main Content (Invitation) -->
+    <div class="main-content" id="main-content">
         <div class="header">Jai Shri Ram</div>
         <img class="hanuman-image" src="your-hanuman-image.jpg" alt="Lord Hanuman">
         <div class="header">श्री हनुमान चालीसा पाठ</div>
@@ -109,13 +138,15 @@
         </div>
 
         <div class="countdown" id="countdown"></div>
-
-        <div class="footer border">
-            <p class="note">पाठ प्रश्रवत महाप्रसाद का आयोजन किया गया है। आप सादर आमंत्रित हैं...</p>
-        </div>
     </div>
 
     <script>
+        // Transition from splash to main content
+        setTimeout(function() {
+            document.getElementById("splash-screen").style.display = "none"; // Hide splash screen
+            document.getElementById("main-content").style.display = "block"; // Show main content
+        }, 7000); // Delay 7 seconds for splash screen to show
+
         // Countdown Timer
         function updateCountdown() {
             const eventDate = new Date("July 26, 2025 20:00:00").getTime();
