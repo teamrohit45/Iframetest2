@@ -5,57 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shree Hanuman Chalisa Path Invitation</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f1f1;
+        body, html {
             margin: 0;
             padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f1f1;
             color: #333;
         }
         .container {
             text-align: center;
-            padding: 30px;
-            background-color: #d32f2f;
+            background: linear-gradient(135deg, #f44336, #ff9800);
             color: #fff;
+            padding: 20px 0;
+            position: relative;
         }
         .header {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
         .hanuman-image {
-            margin-top: 20px;
             width: 300px;
             height: auto;
+            animation: bounce 2s infinite;
         }
         .date {
             font-size: 1.5rem;
             margin-top: 20px;
+            font-weight: bold;
         }
         .invitation-text {
             font-size: 1.2rem;
-            margin-top: 20px;
-            text-align: center;
+            margin-top: 30px;
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
         .invitation-text p {
             margin: 10px 0;
         }
         .footer {
+            margin-top: 40px;
             font-size: 1.1rem;
-            margin-top: 30px;
-        }
-        .note {
-            margin-top: 20px;
-            font-style: italic;
-        }
-        .footer {
             font-weight: bold;
         }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff9800;
+        }
+        .note {
+            font-style: italic;
+            margin-top: 20px;
+            color: #ff9800;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
         .border {
-            border-top: 3px solid #ff9800;
-            border-bottom: 3px solid #ff9800;
+            border-top: 5px solid #ff9800;
+            border-bottom: 5px solid #ff9800;
             margin-top: 30px;
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                font-size: 2rem;
+            }
+            .hanuman-image {
+                width: 200px;
+            }
+            .invitation-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -73,10 +108,34 @@
             <p><strong>स्थान:</strong><br> नगरस्थान, नगर गोविया 441601</p>
         </div>
 
+        <div class="countdown" id="countdown"></div>
+
         <div class="footer border">
             <p class="note">पाठ प्रश्रवत महाप्रसाद का आयोजन किया गया है। आप सादर आमंत्रित हैं...</p>
         </div>
     </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date("July 26, 2025 20:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance <= 0) {
+                document.getElementById('countdown').innerHTML = "Event Started!";
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = `Event starts in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
 
 </body>
 </html>
